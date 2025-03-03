@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:62971
+    ports:
+      - "62971:62971"
+    networks:
+      - app-network
+    depends_on:
+      - mongolo
+    
+
+  mongolo:
+    image: mongo:latest
+    container_name: mongolo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge

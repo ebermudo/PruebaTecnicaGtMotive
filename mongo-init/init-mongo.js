@@ -1,0 +1,10 @@
+db = db.getSiblingDB('VehicleRentalMicroservice');
+db.createCollection('Clients');
+db.createCollection('Vehicles');
+db.createCollection('Rentals');
+db.Clients.insert({ClientId: 1, Dni: '47888888Z', MakeDate: '01/03/2025', VehicleId: null});
+db = db.getSiblingDB('TestDatabase');
+db.createCollection('Clients');
+db.createCollection('Vehicles');
+db.createCollection('Rentals');
+db.Clients.insert({ClientId: 1, Dni: '47888888Z', MakeDate: '01/03/2025', VehicleId: null}); 
